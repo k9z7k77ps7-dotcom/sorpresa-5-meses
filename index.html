@@ -5,35 +5,351 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para mi morenita hermosa ❤️</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Georgia,serif;color:#71334b;text-align:center;background:linear-gradient(135deg,#fff1f5,#ffdce9,#fff8f2);overflow-x:hidden}
-header{min-height:78vh;padding:60px 20px;display:flex;flex-direction:column;justify-content:center;align-items:center}
-.heart{font-size:48px;animation:latido 1.5s infinite}
-h1,h2{color:#c34470}
-h1{font-size:clamp(34px,7vw,58px)}
-p{line-height:1.85}
-.intro{max-width:650px;font-size:19px}
-button{background:#d84d7b;color:white;border:0;border-radius:30px;padding:14px 23px;margin:10px 5px;font-size:16px;cursor:pointer}
-button:hover{background:#b83260}
-section{padding:35px 18px;max-width:950px;margin:auto}
-.card{background:#ffffffdf;border:1px solid #f4c2d4;border-radius:24px;padding:25px;margin:20px auto;box-shadow:0 8px 25px #a83d6115}
-.date{color:#b83260;font-size:21px;font-weight:bold}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:25px}
-.gallery img{width:100%;height:330px;object-fit:cover;border:5px solid white;border-radius:20px}
-.caption{font-style:italic;color:#98516a}
-#mensaje{min-height:55px;font-size:20px;font-weight:bold}
-#carta{display:none;text-align:left;font-size:17px;padding:25px;line-height:1.9}
-.signature{text-align:center;color:#bd3e6b;font-size:20px;font-weight:bold}
-.flores{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:4}
-.flor{position:absolute;bottom:-60px;animation:subir 20s linear infinite;opacity:0}
-.petalo{position:absolute;top:-50px;animation:caer 15s linear infinite;opacity:0}
-@keyframes subir{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.8}85%{opacity:.8}100%{transform:translateY(-115vh) rotate(360deg);opacity:0}}
-@keyframes caer{0%{transform:translateY(-5vh) rotate(0);opacity:0}10%{opacity:.7}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
-@keyframes latido{50%{transform:scale(1.15)}}
-@media(max-width:550px){.gallery img{height:260px}#carta{padding:18px;font-size:16px}}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #71334b;
+  text-align: center;
+  background: linear-gradient(135deg, #fff1f5, #ffdce9, #fff8f2);
+}
+
+header {
+  min-height: 80vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  font-size: 48px;
+  display: inline-block;
+  animation: latido 1.5s infinite;
+}
+
+h1 {
+  color: #c34470;
+  font-size: clamp(34px, 7vw, 58px);
+  margin: 18px 0;
+}
+
+h2 { color: #c34470; font-size: 28px; }
+p { line-height: 1.85; }
+.intro { max-width: 650px; font-size: 19px; }
+
+button {
+  background: #d84d7b;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 23px;
+  margin: 10px 5px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #bd416c30;
+}
+
+button:hover { background: #b83260; }
+
+section {
+  padding: 35px 18px;
+  max-width: 950px;
+  margin: auto;
+}
+
+.card {
+  background: #ffffffd9;
+  border: 1px solid #f4c2d4;
+  border-radius: 24px;
+  padding: 25px;
+  margin: 20px auto;
+  box-shadow: 0 8px 25px #a83d6115;
+}
+
+.date {
+  color: #b83260;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border: 5px solid white;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px #9e456125;
+}
+
+.caption { font-style: italic; color: #98516a; }
+
+#mensaje {
+  min-height: 55px;
+  font-size: 20px;
+  font-weight: bold;
+  max-width: 600px;
+}
+
+#carta {
+  display: none;
+  text-align: left;
+  font-size: 17px;
+  padding: 25px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+#carta p { margin-bottom: 22px; }
+
+.signature {
+  text-align: center;
+  color: #bd3e6b;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+footer { padding: 45px 18px 60px; }
+
+.flores-animadas {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.flor {
+  position: absolute;
+  bottom: -60px;
+  opacity: 0;
+  animation: subirFlor linear infinite;
+}
+
+.petalo {
+  position: absolute;
+  top: -50px;
+  opacity: 0;
+  animation: caerPetalo linear infinite;
+}
+
+@keyframes subirFlor {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15% { opacity: .8; }
+  85% { opacity: .8; }
+  100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes caerPetalo {
+  0% { transform: translate(0, -5vh) rotate(0deg); opacity: 0; }
+  10% { opacity: .7; }
+  50% { transform: translate(45px, 50vh) rotate(180deg); }
+  90% { opacity: .7; }
+  100% { transform: translate(-25px, 110vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@media (max-width: 550px) {
+  header { min-height: 75vh; }
+  .gallery img { height: 260px; }
+  #carta { padding: 18px; font-size: 16px; }
+}
 </style>
 </head>
+
+<body>
+
+<div class="flores-animadas" aria-hidden="true">
+  <span class="flor" style="left:5%;animation-duration:18s;font-size:30px">🌸</span>
+  <span class="flor" style="left:22%;animation-duration:21s;animation-delay:5s;font-size:25px">🌹</span>
+  <span class="flor" style="left:48%;animation-duration:19s;animation-delay:2s;font-size:28px">🌷</span>
+  <span class="flor" style="left:72%;animation-duration:22s;animation-delay:7s;font-size:32px">🌸</span>
+  <span class="flor" style="left:90%;animation-duration:17s;animation-delay:3s;font-size:25px">🌺</span>
+
+  <span class="petalo" style="left:12%;animation-duration:13s;animation-delay:1s;font-size:20px">🌸</span>
+  <span class="petalo" style="left:35%;animation-duration:15s;animation-delay:6s;font-size:16px">🌷</span>
+  <span class="petalo" style="left:60%;animation-duration:14s;animation-delay:3s;font-size:18px">🌸</span>
+  <span class="petalo" style="left:82%;animation-duration:16s;animation-delay:8s;font-size:20px">💗</span>
+</div>
+
+<header>
+  <div class="heart">❤️</div>
+  <p class="intro">Una pequeña sorpresa para ti, mi niña preciosa 🌸</p>
+  <h1>Felices 5 meses, mi morenita</h1>
+  <p class="intro">Para Doris, mi nena, mi amor bonito y mi My Girl. 💗<br>Hice esta página pensando en ti y en nuestra historia.</p>
+
+  <button onclick="mostrarFrase()">Toca aquí, mi amor 💌</button>
+  <p id="mensaje"></p>
+
+  <button onclick="document.getElementById('recuerdos').scrollIntoView({behavior:'smooth'})">
+    Nuestros recuerdos 📸
+  </button>
+
+  <div>
+    <button id="musicButton" onclick="toggleMusica()">
+      🎶 Nuestra canción, mi amor ❤️
+    </button>
+    <p>Toca el botón para escuchar nuestra canción. 💗</p>
+
+    <audio id="nuestraMusica" loop preload="none">
+      <source src="musica.mp3" type="audio/mpeg">
+      Tu navegador no puede reproducir este audio.
+    </audio>
+  </div>
+</header>
+
+<section>
+  <div class="card">
+    <div class="heart">💗</div>
+    <h2>Nuestra historia comenzó...</h2>
+    <p class="date">10 de julio de 2026</p>
+    <p>Una fecha que guardo con mucho cariño porque forma parte de nuestra historia. Hoy celebramos cinco meses de momentos, sonrisas y recuerdos que significan mucho para mí.</p>
+    <p>Y espero que todavía nos queden muchos recuerdos bonitos por crear. 🥹❤️</p>
+  </div>
+</section>
+
+<section id="recuerdos">
+  <h2>Nuestros recuerdos, mi morena 📸</h2>
+  <p>Cada foto tiene algo especial porque apareces tú. ❤️</p>
+
+  <div class="gallery">
+    <div>
+      <img src="WhatsApp%20Image%202026-10-13%20at%2021.47.10.jpeg" alt="Un recuerdo juntos">
+      <p class="caption">Tú y yo, mi lugar bonito. 💗</p>
+    </div>
+
+    <div>
+      <img src="WhatsApp%20Image%202026-10-13%20at%2021.47.11.jpeg" alt="Otro recuerdo juntos">
+      <p class="caption">Mi sonrisa favorita eres tú. ❤️</p>
+    </div>
+
+    <div>
+      <img src="WhatsApp%20Image%202026-10-13%20at%2021.52.33.jpeg" alt="Un momento especial juntos">
+      <p class="caption">Un momento que quiero recordar. 🥹</p>
+    </div>
+
+    <div>
+      <img src="WhatsApp%20Image%202026-10-13%20at%2021.53.05.jpeg" alt="Un recuerdo especial">
+      <p class="caption">Siempre tú, mi morenita. 🎀</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <h2>Unas palabritas para ti 💕</h2>
+    <p>Te amo, mi amor. ❤️</p>
+    <p>Te quiero, mi nena. 💗</p>
+    <p>Me encantas, mi morena. 🥹</p>
+    <p>Gracias por formar parte de mi vida. 🫂</p>
+    <p>Eres demasiado especial para mí. 🌸</p>
+    <p>Felices cinco meses, My Girl. 💋</p>
+  </div>
+</section>
+
+<section>
+  <h2>Una cartita para mi morenita 💌</h2>
+  <p>Escribí estas palabras pensando en ti, mi amor. ❤️</p>
+  <button onclick="abrirCarta()">Abrir mi cartita 💌</button>
+
+  <article class="card" id="carta">
+    <h2>Para mi morenita hermosa ❤️🥹</h2>
+
+    <p>Mi amor, no sabes lo feliz que me hace poder escribirte estas palabras. A veces tengo tantas cosas que quisiera decirte que no sé ni por dónde empezar, porque siento que un simple “te amo” no alcanza para expresar todo lo que siento por ti. ❤️</p>
+
+    <p>Hoy cumplimos 5 meses juntos, mi amor, 5 meses desde aquel 10 de julio de 2026, una fecha que siempre voy a guardar con mucho cariño por nuestra historia. 🥹💗 Y aunque tal vez para otras personas cinco meses no parezcan mucho, para mí significan un montón, porque en este tiempo tú me has demostrado que eres la indicada y te has convertido en alguien demasiado importante en mi vida.</p>
+
+    <p>Gracias por llegar a mi vida, por regalarme tus sonrisas, por cada abrazo, cada beso, cada momento juntos y hasta por esas pequeñas cosas que quizás tú ni notas, pero que a mí me hacen feliz. Me encanta estar contigo, molestarte, hacerte reír y darte cariño. No sabes lo bonito que se siente tener a alguien como tú con quien compartir mis momentos. ❤️‍🩹</p>
+
+    <p>Mi amor, quiero que sepas que no necesito que todo sea perfecto entre nosotros. Sé que tendremos días bonitos y otros en los que quizás no estemos de acuerdo, pero yo quiero que siempre podamos hablar, entendernos y apoyarnos. Quiero seguir aprendiendo de ti, conocerte cada día un poquito más y demostrarte con mis acciones que lo que siento por ti es sincero. No quiero que mis palabras se queden solamente en un mensaje bonito; quiero que también puedas sentir mi amor en la forma en que te trato y te cuido. 🫶🏻</p>
+
+    <p>Y ahora que se acerca el fin de año, me pongo a pensar en todos los recuerdos que hemos creado y en lo bonito que sería seguir sumando muchos más contigo. No sé exactamente qué nos traerá el futuro, pero sí sé que me hace ilusión seguir compartiendo momentos a tu lado, tomar más fotos juntos, reírnos por cualquier tontería y crear recuerdos que algún día podamos mirar y decir: “Mira todo lo que hemos vivido juntos”. 🥹💘</p>
+
+    <p>Quiero que nunca dudes de lo especial que eres para mí. Eres mi nena, mi amor bonito, mi compañera y esa persona que me saca una sonrisa con solo pensar en ella. Si alguna vez tienes un día difícil, quiero que recuerdes que no tienes que fingir estar bien conmigo. También quiero estar para ti cuando estés triste, cuando necesites hablar o simplemente cuando quieras que alguien te acompañe. No siempre voy a tener las palabras perfectas, pero quiero escucharte y hacer lo posible por verte sonreír. 🫂❤️</p>
+
+    <p>Espero que termines este año con una sonrisa y que recuerdes que hay alguien que te quiere muchísimo y que se siente muy feliz de tenerte en su vida. 🌸</p>
+
+    <p>Te amo por lo que eres, por cómo me haces sentir y por todo lo bonito que estamos construyendo juntos. Gracias por ser parte de mi historia. Y si pudiera pedir algo para este nuevo año, sería que la vida nos regale muchos momentos bonitos, mucha paciencia, mucho amor y muchísimas razones para seguir eligiéndonos. 🥹❤️</p>
+
+    <p>Te amo muchísimo, mi morena. ¡Felices 5 meses y feliz fin de año! 💋💗</p>
+
+    <p class="signature">
+      Con todo mi cariño, para ti, My Girl ❤️🫶🏻<br>
+      Gracias por ser tú y por permitirme formar parte de tu vida. 🍁🌓
+    </p>
+
+    <div style="text-align:center">
+      <button onclick="cerrarCarta()">Cerrar cartita ❤️</button>
+    </div>
+  </article>
+</section>
+
+<footer>
+  <div class="heart">💗</div>
+  <h2>Te amo, mi morenita hermosa</h2>
+  <p>Por nuestros cinco meses y por todos los recuerdos que aún nos esperan. ❤️</p>
+  <p>Siempre con cariño, para ti, My Girl. 💋</p>
+</footer>
+
+<script>
+const frases = [
+  "Te amo muchísimo, mi morenita. ❤️",
+  "Mi nena, gracias por hacerme tan feliz. 🥹",
+  "Doris, eres una persona demasiado especial para mí. 💗",
+  "Felices cinco meses, mi amor bonito. 💋",
+  "Mi My Girl, quiero crear muchos más recuerdos contigo. 🫶🏻"
+];
+
+let indice = 0;
+
+function mostrarFrase() {
+  document.getElementById("mensaje").textContent = frases[indice];
+  indice = (indice + 1) % frases.length;
+}
+
+function abrirCarta() {
+  document.getElementById("carta").style.display = "block";
+  document.getElementById("carta").scrollIntoView({behavior: "smooth"});
+}
+
+function cerrarCarta() {
+  document.getElementById("carta").style.display = "none";
+}
+
+function toggleMusica() {
+  const audio = document.getElementById("nuestraMusica");
+  const button = document.getElementById("musicButton");
+
+  if (audio.paused) {
+    audio.play().then(() => {
+      button.textContent = "⏸️ Pausar nuestra canción ❤️";
+    }).catch(() => {
+      alert("Asegúrate de que musica.mp3 esté en la misma carpeta que index.html.");
+    });
+  } else {
+    audio.pause();
+    button.textContent = "🎶 Nuestra canción, mi amor ❤️";
+  }
+}
+</script>
+
+</body>
+</html>
 <body>
 
 <div class="flores" aria-hidden="true">
