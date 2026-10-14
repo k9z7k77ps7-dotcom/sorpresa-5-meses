@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Felices 5 meses, mi amor 💗</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;text-align:center;color:#742747;background:linear-gradient(135deg,#ffe1ec,#fff8fb,#ffc8dc)}
+main{max-width:760px;margin:auto;padding:25px 16px 50px}
+.card{background:#ffffffd9;padding:28px 20px;border-radius:25px;margin:20px 0;box-shadow:0 8px 28px #c34b7920}
+h1{font-size:clamp(34px,8vw,55px);color:#c12d68;margin:15px 0}
+h2{color:#bd3268}
+p{font-size:17px;line-height:1.8}
+.heart{font-size:65px;animation:beat 1.3s infinite}
+button{background:#e94f8a;color:white;border:0;border-radius:30px;padding:14px 22px;font-size:16px;font-weight:bold;cursor:pointer;margin:8px}
+button:hover{background:#c92e6c}
+.messages{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.message{padding:16px 8px;border-radius:16px;background:#ffeaf2;font-weight:bold}
+#letter{display:none}
+.letter-text{background:#fff4f8;border-radius:18px;padding:20px;text-align:left;line-height:1.9;white-space:pre-line}
+@keyframes beat{50%{transform:scale(1.12)}}
+.floating{position:fixed;bottom:-40px;pointer-events:none;animation:float 9s linear infinite}
+@keyframes float{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+</style>
+</head>
+<body>
+<main>
+<section class="card">
+<div>💌 UNA SORPRESA PARA MI NIÑA 💌</div>
+<div class="heart">💗</div>
+<h1>¡Felices 5 meses,<br>mi amor!</h1>
+<p>Mi niña hermosa, preparé esto especialmente para ti.<br>
+Quiero recordarte cuánto te amo y lo feliz que soy de tenerte como mi novia. 🥹❤️</p>
+<button onclick="document.getElementById('letter').style.display='block';document.getElementById('letter').scrollIntoView({behavior:'smooth'})">Toca aquí, mi amor 💌</button>
+</section>
+
+<section class="card">
+<h2>Unas palabritas para ti 💕</h2>
+<div class="messages">
+<div class="message">Te amo ❤️</div>
+<div class="message">Te quiero 💗</div>
+<div class="message">Te extraño 🥺</div>
+<div class="message">Me encantas 😚</div>
+<div class="message">Eres mi niña 🌷</div>
+<div class="message">Mi amor bonito 💘</div>
+<div class="message">Gracias por existir 🫶</div>
+<div class="message">Quiero verte feliz 💞</div>
+</div>
+</section>
+
+<section class="card" id="letter">
+<h2>Una carta para ti, mi vida 💌</h2>
+<div class="letter-text">Mi amor, felices cinco meses. ❤️
+
+Quiero que sepas que te amo muchísimo y que me hace muy feliz poder decir que eres mi novia. Me encanta hablar contigo, reír contigo y compartir momentos bonitos a tu lado.
+
+Gracias por cada abrazo, cada palabra bonita, cada sonrisa y cada detalle que me das. Tal vez no siempre encuentre las palabras perfectas para decirte todo lo que siento, pero nunca quiero que dudes de lo importante que eres para mí.
+
+Quiero seguir conociéndote, cuidando lo nuestro y creando recuerdos contigo. Estos cinco meses significan mucho para mí y me emociona pensar en todos los momentos bonitos que todavía nos quedan por vivir.
+
+Te amo, te quiero, te adoro y me encantas, mi niña. Gracias por ser mi novia y por formar parte de mi vida.
+
+¡Felices cinco meses, mi amor! 💗
+
+Con muchísimo amor,
+tu novio ❤️</div>
+<button onclick="document.getElementById('letter').style.display='none';document.getElementById('inicio').scrollIntoView({behavior:'smooth'})">Cerrar cartita 💗</button>
+</section>
+
+<section class="card" id="inicio">
+<h2>Y nunca olvides esto… 💖</h2>
+<p><strong>TE AMO, TE QUIERO Y ME ENCANTA SER TU NOVIO.</strong></p>
+<p>Un abrazo enorme y muchos besitos para ti. 😚💋</p>
+<button onclick="alert('Te mando un abrazo enorme, mi niña. ¡Te amo muchísimo! ❤️')">Te mando un abrazo 🤗</button>
+</section>
+<footer>Hecho especialmente para ti, con mucho amor 💗</footer>
+</main>
+<script>
+for(let i=0;i<18;i++){
+let h=document.createElement('span');
+h.className='floating';
+h.textContent=['💗','💕','💖','♡'][i%4];
+h.style.left=Math.random()*100+'%';
+h.style.animationDelay=Math.random()*9+'s';
+h.style.fontSize=(18+Math.random()*18)+'px';
+document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
