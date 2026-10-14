@@ -9,243 +9,293 @@
 <style>
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  color: #71334b;
-  text-align: center;
-  background: linear-gradient(135deg, #fff1f5, #ffdce9, #fff8f2);
+  color: #663247;
+  background: #fff5f8;
 }
 
-header {
-  min-height: 80vh;
-  padding: 75px 20px 50px;
+.hero {
+  min-height: 92vh;
+  padding: 55px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  background: linear-gradient(145deg, #ffe5ef, #fff7fa, #fbd0df);
 }
 
-.heart {
-  font-size: 48px;
-  animation: latido 1.5s infinite;
+.small-heart {
+  font-size: 42px;
+  animation: heartbeat 1.5s infinite;
+}
+
+.eyebrow {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #a34c6c;
 }
 
 h1 {
-  color: #c34470;
-  font-size: clamp(34px, 7vw, 58px);
-  margin: 18px 0;
+  color: #bd426c;
+  font-size: clamp(36px, 8vw, 60px);
+  line-height: 1.15;
+  margin: 20px 0;
 }
 
 h2 {
-  color: #c34470;
-  font-size: 28px;
+  color: #b53e68;
+  font-size: clamp(25px, 5vw, 34px);
 }
 
-p {
-  line-height: 1.85;
-}
-
-.intro {
+.hero p {
   max-width: 650px;
-  font-size: 19px;
+  line-height: 1.9;
+  font-size: 18px;
 }
 
 button {
-  background: #d84d7b;
+  background: #c94370;
   color: white;
   border: none;
+  padding: 14px 24px;
+  margin: 8px;
   border-radius: 30px;
-  padding: 14px 23px;
-  margin: 10px 5px;
   font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 5px 15px #bd416c30;
+  transition: transform .2s, background .2s;
 }
 
 button:hover {
-  background: #b83260;
+  background: #a82e59;
+  transform: translateY(-2px);
 }
 
 section {
-  padding: 35px 18px;
-  max-width: 950px;
+  padding: 55px 18px;
+  max-width: 1000px;
   margin: auto;
+  text-align: center;
 }
 
-.card {
-  background: #ffffffc9;
-  border: 1px solid #f4c2d4;
-  border-radius: 24px;
-  padding: 25px;
-  margin: 20px auto;
-  box-shadow: 0 8px 25px #a83d6115;
+.subtitle {
+  color: #986077;
+  line-height: 1.8;
+}
+
+.date-card {
+  background: white;
+  padding: 32px 20px;
+  border-radius: 25px;
+  border: 1px solid #f4c6d6;
+  box-shadow: 0 10px 35px #a83d6112;
 }
 
 .date {
-  color: #b83260;
-  font-size: 21px;
+  font-size: 24px;
   font-weight: bold;
+  color: #c94370;
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 25px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
 }
 
-.gallery img {
+.photo-card {
+  background: white;
+  padding: 10px 10px 16px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px #a83d6117;
+}
+
+.photo-card img {
+  display: block;
   width: 100%;
-  height: 330px;
+  height: 320px;
   object-fit: cover;
-  border: 5px solid white;
-  border-radius: 20px;
-  box-shadow: 0 6px 18px #9e456125;
+  border-radius: 12px;
 }
 
-.caption {
+.photo-card p {
+  margin: 13px 4px 0;
+  color: #99536c;
   font-style: italic;
-  color: #98516a;
+  line-height: 1.6;
 }
 
-#mensaje {
-  min-height: 55px;
-  font-size: 20px;
-  font-weight: bold;
+.letter-intro {
   max-width: 600px;
+  margin: 0 auto 20px;
+  line-height: 1.8;
 }
 
-#carta {
+.letter {
   display: none;
   text-align: left;
+  background: #fff;
+  border: 1px solid #f2bfd2;
+  border-radius: 22px;
+  padding: clamp(20px, 5vw, 42px);
+  margin: 28px auto 0;
+  box-shadow: 0 12px 35px #a83d6115;
+  animation: appear .5s ease;
+}
+
+.letter h2 {
+  text-align: center;
+  line-height: 1.4;
+}
+
+.letter p {
   font-size: 17px;
-  padding: 25px;
-  line-height: 1.9;
+  line-height: 2;
+  margin: 0 0 22px;
   overflow-wrap: anywhere;
 }
 
-#carta p {
-  margin-bottom: 22px;
+.letter .signature {
+  text-align: center;
+  color: #bd426c;
+  font-size: 20px;
 }
 
-.signature {
+.end {
+  padding: 60px 20px 75px;
   text-align: center;
-  color: #bd3e6b;
-  font-size: 20px;
+  background: linear-gradient(145deg, #fbd0df, #fff4f8);
+}
+
+.end h2 {
+  margin-bottom: 12px;
+}
+
+.end p {
+  line-height: 1.8;
+}
+
+#message {
+  min-height: 35px;
+  color: #a82e59;
+  font-size: 19px;
   font-weight: bold;
 }
 
-footer {
-  padding: 45px 18px 60px;
+@keyframes heartbeat {
+  50% { transform: scale(1.13); }
 }
 
-@keyframes latido {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 560px) {
+  .gallery { grid-template-columns: 1fr; }
+  .photo-card img { height: auto; max-height: 450px; }
+  .letter p { font-size: 16px; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="heart">❤️</div>
-  <p class="intro">Una pequeña sorpresa para ti, mi niña preciosa 🌸</p>
-  <h1>Felices 5 meses, mi morenita</h1>
-  <p class="intro">
-    Para Doris, mi nena, mi amor bonito y mi My Girl. 💗
-    Hice esta página pensando en ti y en nuestra historia.
+<header class="hero">
+  <div class="small-heart">❤️</div>
+  <p class="eyebrow">Una sorpresa hecha con amor</p>
+
+  <h1>Felices 5 meses,<br>mi morenita hermosa</h1>
+
+  <p>
+    Para mi Doris, mi nena, mi amor bonito.
+    Una pequeña sorpresa para celebrar nuestra historia. 🥹💗
   </p>
-  <button onclick="mostrarFrase()">Toca aquí, mi amor 💌</button>
-  <p id="mensaje"></p>
-  <button onclick="document.getElementById('recuerdos').scrollIntoView({behavior:'smooth'})">
-    Nuestros recuerdos 📸
+
+  <button onclick="showMessage()">Tengo algo que decirte 💌</button>
+  <p id="message" aria-live="polite"></p>
+
+  <button onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">
+    Ver nuestros recuerdos 📸
   </button>
 </header>
 
 <section>
-  <div class="card">
-    <div class="heart">💗</div>
-    <h2>Nuestra historia comenzó...</h2>
+  <div class="date-card">
+    <div class="small-heart">🌸</div>
+    <h2>Una fecha que guardo en mi corazón</h2>
     <p class="date">10 de julio de 2026</p>
-    <p>
-      Una fecha que guardo con mucho cariño porque forma parte
-      de nuestra historia. Hoy celebramos cinco meses de momentos,
-      sonrisas y recuerdos que significan mucho para mí.
+    <p class="subtitle">
+      El comienzo de nuestra historia y de muchos recuerdos
+      que siempre voy a llevar conmigo. 💗
     </p>
-    <p>Y espero que todavía nos queden muchos recuerdos bonitos por crear. 🥹❤️</p>
   </div>
 </section>
 
-<section id="recuerdos">
-  <h2>Nuestros recuerdos, mi morena 📸</h2>
-  <p>Cada foto tiene algo especial porque apareces tú. ❤️</p>
+<section id="memories">
+  <h2>Pequeños recuerdos, grandes sentimientos 📸</h2>
+  <p class="subtitle">Un pedacito de nosotros, guardado para siempre.</p>
 
   <div class="gallery">
-    <div>
+    <div class="photo-card">
       <img src="WhatsApp%20Image%202026-10-13%20at%2021.47.10.jpeg"
-           alt="Un recuerdo juntos">
-      <p class="caption">Tú y yo, mi lugar bonito. 💗</p>
+           alt="Recuerdo de los dos juntos">
+      <p>Mi momento favorito es uno contigo. ❤️</p>
     </div>
 
-    <div>
+    <div class="photo-card">
       <img src="WhatsApp%20Image%202026-10-13%20at%2021.47.11.jpeg"
-           alt="Otro recuerdo juntos">
-      <p class="caption">Mi sonrisa favorita eres tú. ❤️</p>
+           alt="Un recuerdo juntos en el espejo">
+      <p>Tú y yo, creando nuestra historia. 💗</p>
     </div>
 
-    <div>
+    <div class="photo-card">
       <img src="WhatsApp%20Image%202026-10-13%20at%2021.52.33.jpeg"
-           alt="Un momento especial juntos">
-      <p class="caption">Un momento que quiero recordar. 🥹</p>
+           alt="Una foto bonita de nosotros">
+      <p>Un recuerdo que me saca una sonrisa. 🥹</p>
     </div>
 
-    <div>
+    <div class="photo-card">
       <img src="WhatsApp%20Image%202026-10-13%20at%2021.53.05.jpeg"
-           alt="Un recuerdo especial">
-      <p class="caption">Siempre tú, mi morenita. 🎀</p>
+           alt="Un recuerdo especial de los dos">
+      <p>Mi My Girl. 🎀</p>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="card">
-    <h2>Unas palabritas para ti 💕</h2>
-    <p>Te amo, mi amor. ❤️</p>
-    <p>Te quiero, mi nena. 💗</p>
-    <p>Me encantas, mi morena. 🥹</p>
-    <p>Gracias por formar parte de mi vida. 🫂</p>
-    <p>Eres demasiado especial para mí. 🌸</p>
-    <p>Felices cinco meses, My Girl. 💋</p>
-  </div>
-</section>
+  <h2>Una cartita para ti 💌</h2>
+  <p class="letter-intro subtitle">
+    Hay cosas que a veces cuesta decir en voz alta.
+    Por eso quise escribirte esto, mi amor. ❤️
+  </p>
 
-<section>
-  <h2>Una cartita para mi morenita 💌</h2>
-  <p>Escribí estas palabras pensando en ti, mi amor. ❤️</p>
+  <button id="openButton" onclick="openLetter()">Abrir tu cartita 💗</button>
 
-  <button onclick="abrirCarta()">Abrir mi cartita 💌</button>
-
-  <article class="card" id="carta">
-
-    <h1>Para mi morenita hermosa ❤️🥹</h1>
+  <article class="letter" id="letter">
+    <h2>Para mi morenita hermosa ❤️🥹</h2>
 
     <p>
       Mi amor, no sabes lo feliz que me hace poder escribirte estas
       palabras. A veces tengo tantas cosas que quisiera decirte que
-      no sé ni por dónde empezar, porque siento que un simple
-      “te amo” no alcanza para expresar todo lo que siento por ti. ❤️
+      no sé ni por dónde empezar, porque siento que un simple “te amo”
+      no alcanza para expresar todo lo que siento por ti. ❤️
     </p>
 
     <p>
       Hoy cumplimos 5 meses juntos, mi amor, 5 meses desde aquel
       10 de julio de 2026, una fecha que siempre voy a guardar con
-      mucho cariño por nuestra historia. 🥹💗 Y aunque tal vez para
-      otras personas cinco meses no parezcan mucho, para mí significan
-      un montón, porque en este tiempo tú me has demostrado que eres
-      la indicada y te has convertido en alguien demasiado importante
-      en mi vida.
+      mucho cariño porque forma parte de nuestra historia. 🥹💗
+      Y aunque tal vez para otras personas cinco meses no parezcan
+      mucho, para mí significan un montón, porque en este tiempo tú
+      me has demostrado que eres la indicada y te has convertido
+      en alguien demasiado importante en mi vida.
     </p>
 
     <p>
@@ -306,8 +356,8 @@ footer {
     </p>
 
     <p>
-      Te amo muchísimo, mi morena. ¡Felices 5 meses y feliz fin
-      de año! 💋💗
+      Te amo muchísimo, mi morena. ¡Felices 5 meses y feliz fin de año!
+      💋💗
     </p>
 
     <p class="signature">
@@ -320,41 +370,48 @@ footer {
     </p>
 
     <div style="text-align:center">
-      <button onclick="cerrarCarta()">Cerrar cartita ❤️</button>
+      <button onclick="closeLetter()">Cerrar cartita ❤️</button>
     </div>
   </article>
 </section>
 
-<footer>
-  <div class="heart">💗</div>
-  <h1>Te amo, mi morenita hermosa</h1>
-  <p>Por nuestros cinco meses y por todos los recuerdos que aún nos esperan. ❤️</p>
-  <p>Siempre con cariño, para ti, My Girl. 💋</p>
+<footer class="end">
+  <div class="small-heart">💗</div>
+  <h2>Para ti, mi morenita</h2>
+  <p>
+    Cinco meses de nuestra historia.<br>
+    Un recuerdo hecho especialmente para ti. ❤️
+  </p>
+  <p>Te quiero, mi nena. 🌸</p>
 </footer>
 
 <script>
-const frases = [
+const messages = [
   "Te amo muchísimo, mi morenita. ❤️",
-  "Mi nena, gracias por hacerme tan feliz. 🥹",
-  "amor, eres una persona demasiado especial para mí. 💗",
-  "Felices cinco meses, mi amor bonito. 💋",
-  " My Girl, quiero crear muchos más recuerdos contigo. 🫶🏻"
+  "Feliz cinco meses, mi nena hermosa. 💗",
+  "Esta página la hice pensando en ti. 🥹",
+  "Con cariño, para ti, My Girl. 💌"
 ];
 
-let indice = 0;
+let messageIndex = 0;
 
-function mostrarFrase() {
-  document.getElementById("mensaje").textContent = frases[indice];
-  indice = (indice + 1) % frases.length;
+function showMessage() {
+  document.getElementById("message").textContent =
+    messages[messageIndex];
+
+  messageIndex = (messageIndex + 1) % messages.length;
 }
 
-function abrirCarta() {
-  document.getElementById("carta").style.display = "block";
-  document.getElementById("carta").scrollIntoView({behavior:"smooth"});
+function openLetter() {
+  document.getElementById("letter").style.display = "block";
+  document.getElementById("openButton").style.display = "none";
+  document.getElementById("letter").scrollIntoView({behavior:"smooth"});
 }
 
-function cerrarCarta() {
-  document.getElementById("carta").style.display = "none";
+function closeLetter() {
+  document.getElementById("letter").style.display = "none";
+  document.getElementById("openButton").style.display = "inline-block";
+  document.getElementById("openButton").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
