@@ -4,88 +4,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Felices 5 meses, mi amor 💗</title>
+<title>Para Doris, mi amor ❤️</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;text-align:center;color:#742747;background:linear-gradient(135deg,#ffe1ec,#fff8fb,#ffc8dc)}
-main{max-width:760px;margin:auto;padding:25px 16px 50px}
-.card{background:#ffffffd9;padding:28px 20px;border-radius:25px;margin:20px 0;box-shadow:0 8px 28px #c34b7920}
-h1{font-size:clamp(34px,8vw,55px);color:#c12d68;margin:15px 0}
-h2{color:#bd3268}
-p{font-size:17px;line-height:1.8}
-.heart{font-size:65px;animation:beat 1.3s infinite}
-button{background:#e94f8a;color:white;border:0;border-radius:30px;padding:14px 22px;font-size:16px;font-weight:bold;cursor:pointer;margin:8px}
-button:hover{background:#c92e6c}
-.messages{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
-.message{padding:16px 8px;border-radius:16px;background:#ffeaf2;font-weight:bold}
-#letter{display:none}
-.letter-text{background:#fff4f8;border-radius:18px;padding:20px;text-align:left;line-height:1.9;white-space:pre-line}
-@keyframes beat{50%{transform:scale(1.12)}}
-.floating{position:fixed;bottom:-40px;pointer-events:none;animation:float 9s linear infinite}
-@keyframes float{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+body{
+  margin:0;
+  font-family:Georgia,'Times New Roman',serif;
+  color:#702b43;
+  text-align:center;
+  background:linear-gradient(135deg,#fff0f5,#ffe0eb,#fff8f2);
+}
+header{padding:65px 18px 35px}
+.heart{font-size:42px;animation:latido 1.3s infinite}
+h1{font-size:clamp(32px,7vw,54px);margin:15px 0;color:#bd426b}
+.subtitle{font-size:19px;line-height:1.8}
+section{padding:28px 18px;max-width:900px;margin:auto}
+h2{color:#bd426b;font-size:29px}
+button{
+  border:0;border-radius:30px;padding:14px 24px;margin:8px;
+  background:#d94f7b;color:white;font-size:16px;cursor:pointer;
+  box-shadow:0 5px 15px #d94f7b33;
+}
+button:hover{background:#b93462}
+#mensaje{font-size:20px;line-height:1.8;min-height:50px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.gallery img{
+  width:100%;height:340px;object-fit:cover;border-radius:20px;
+  border:5px solid white;box-shadow:0 8px 22px #a83d6125;
+}
+.caption{font-style:italic;margin-top:10px}
+.card{
+  background:#ffffffb8;border:1px solid #f4c6d5;border-radius:24px;
+  padding:25px;margin:18px auto;box-shadow:0 8px 25px #a83d6115;
+}
+#carta{display:none;text-align:left;line-height:1.9;font-size:18px}
+.date{font-size:17px;color:#a33b61}
+footer{padding:35px 15px 50px}
+@keyframes latido{50%{transform:scale(1.18)}}
 </style>
 </head>
 <body>
-<main>
-<section class="card">
-<div>💌 UNA SORPRESA PARA MI NIÑA 💌</div>
-<div class="heart">💗</div>
-<h1>¡Felices 5 meses,<br>mi amor!</h1>
-<p>Mi niña hermosa, preparé esto especialmente para ti.<br>
-Quiero recordarte cuánto te amo y lo feliz que soy de tenerte como mi novia. 🥹❤️</p>
-<button onclick="document.getElementById('letter').style.display='block';document.getElementById('letter').scrollIntoView({behavior:'smooth'})">Toca aquí, mi amor 💌</button>
+<header>
+  <div class="heart">❤️</div>
+  <p class="subtitle">Para mi nena preciosa</p>
+  <h1>Felices 5 meses, Doris</h1>
+  <p class="subtitle">Mi amor, esta pequeña sorpresa es solo para ti.<br>
+  Gracias por formar parte de mi vida. 💗</p>
+  <button onclick="mostrarFrase()">Toca aquí, mi amor 💌</button>
+  <p id="mensaje"></p>
+</header>
+
+<section>
+  <div class="card">
+    <h2>Nuestra fecha especial 💕</h2>
+    <p class="date"><strong>10 de julio de 2026</strong></p>
+    <p>El día que comenzó esta historia tan bonita para nosotros.
+    Quiero seguir creando recuerdos contigo, mi nena.</p>
+  </div>
 </section>
 
-<section class="card">
-<h2>Unas palabritas para ti 💕</h2>
-<div class="messages">
-<div class="message">Te amo ❤️</div>
-<div class="message">Te quiero 💗</div>
-<div class="message">Te extraño 🥺</div>
-<div class="message">Me encantas 😚</div>
-<div class="message">Eres mi niña 🌷</div>
-<div class="message">Mi amor bonito 💘</div>
-<div class="message">Gracias por existir 🫶</div>
-<div class="message">Quiero verte feliz 💞</div>
-</div>
+<section>
+  <h2>Nuestros recuerdos 📸</h2>
+  <p>Cada foto guarda un pedacito de nuestra historia.</p>
+  <div class="gallery">
+    <div>
+      <img src="WhatsApp%20Image%202026-10-13%20at%2021.47.11.jpeg" alt="Un recuerdo juntos">
+      <p class="caption">Un momento contigo ❤️</p>
+    </div>
+    <div>
+      <img src="WhatsApp%20Image%202026-10-13%20at%2021.47.10.jpeg" alt="Un recuerdo en blanco y negro">
+      <p class="caption">Tú y yo, mi amor 🖤</p>
+    </div>
+    <div>
+      <img src="WhatsApp%20Image%202026-10-13%20at%2021.52.33.jpeg" alt="Un recuerdo juntos">
+      <p class="caption">Mi lugar favorito es contigo 💗</p>
+    </div>
+    <div>
+      <img src="WhatsApp%20Image%202026-10-13%20at%2021.53.05.jpeg" alt="Un recuerdo especial">
+      <p class="caption">Siempre especial para mí 🎀</p>
+    </div>
+  </div>
 </section>
 
-<section class="card" id="letter">
-<h2>Una carta para ti, mi vida 💌</h2>
-<div class="letter-text">Mi amor, felices cinco meses. ❤️
-
-Quiero que sepas que te amo muchísimo y que me hace muy feliz poder decir que eres mi novia. Me encanta hablar contigo, reír contigo y compartir momentos bonitos a tu lado.
-
-Gracias por cada abrazo, cada palabra bonita, cada sonrisa y cada detalle que me das. Tal vez no siempre encuentre las palabras perfectas para decirte todo lo que siento, pero nunca quiero que dudes de lo importante que eres para mí.
-
-Quiero seguir conociéndote, cuidando lo nuestro y creando recuerdos contigo. Estos cinco meses significan mucho para mí y me emociona pensar en todos los momentos bonitos que todavía nos quedan por vivir.
-
-Te amo, te quiero, te adoro y me encantas, mi niña. Gracias por ser mi novia y por formar parte de mi vida.
-
-¡Felices cinco meses, mi amor! 💗
-
-Con muchísimo amor,
-tu novio ❤️</div>
-<button onclick="document.getElementById('letter').style.display='none';document.getElementById('inicio').scrollIntoView({behavior:'smooth'})">Cerrar cartita 💗</button>
+<section>
+  <h2>Una cartita para ti 💌</h2>
+  <p>Hay algo que quiero recordarte, Doris...</p>
+  <button onclick="abrirCarta()">Abrir mi cartita ❤️</button>
+  <div class="card" id="carta">
+    <p>Mi Doris, mi nena, mi amor: ❤️</p>
+    <p>Hoy celebramos cinco meses de esta historia tan bonita.
+    Quiero que sepas lo especial que eres para mí y lo feliz que me
+    hace compartir momentos contigo. Desde aquel 10 de julio,
+    guardo con mucho cariño nuestra historia y todo lo que hemos vivido.</p>
+    <p>Gracias por tus sonrisas, por los momentos juntos y por cada
+    recuerdo que poco a poco vamos construyendo. No necesito que
+    todos los días sean perfectos; quiero que sigamos aprendiendo,
+    hablando, apoyándonos y creciendo juntos.</p>
+    <p>Te quiero muchísimo, mi nena. Espero que esta pequeña página
+    te saque una sonrisa y te recuerde que tienes un lugar muy especial
+    en mi corazón.</p>
+    <p>Felices cinco meses, mi amor. 💗</p>
+    <p>Con mucho cariño,<br>Tu amor ❤️</p>
+    <button onclick="cerrarCarta()">Cerrar cartita</button>
+  </div>
 </section>
 
-<section class="card" id="inicio">
-<h2>Y nunca olvides esto… 💖</h2>
-<p><strong>TE AMO, TE QUIERO Y ME ENCANTA SER TU NOVIO.</strong></p>
-<p>Un abrazo enorme y muchos besitos para ti. 😚💋</p>
-<button onclick="alert('Te mando un abrazo enorme, mi niña. ¡Te amo muchísimo! ❤️')">Te mando un abrazo 🤗</button>
-</section>
-<footer>Hecho especialmente para ti, con mucho amor 💗</footer>
-</main>
+<footer>
+  <div class="heart">💗</div>
+  <h2>Te quiero, Doris</h2>
+  <p>Por nuestros cinco meses y por todos los recuerdos que aún nos esperan.</p>
+</footer>
+
 <script>
-for(let i=0;i<18;i++){
-let h=document.createElement('span');
-h.className='floating';
-h.textContent=['💗','💕','💖','♡'][i%4];
-h.style.left=Math.random()*100+'%';
-h.style.animationDelay=Math.random()*9+'s';
-h.style.fontSize=(18+Math.random()*18)+'px';
-document.body.appendChild(h);
+const frases=[
+  "Te quiero muchísimo, mi nena. ❤️",
+  "Doris, haces mis días más bonitos. 💗",
+  "Cinco meses de una historia que quiero seguir cuidando. 🥹",
+  "Mi amor, gracias por tantos recuerdos juntos. 💌",
+  "Tú tienes un lugar muy especial en mi corazón. ❤️"
+];
+let indice=0;
+function mostrarFrase(){
+  document.getElementById("mensaje").textContent=frases[indice];
+  indice=(indice+1)%frases.length;
+}
+function abrirCarta(){
+  document.getElementById("carta").style.display="block";
+}
+function cerrarCarta(){
+  document.getElementById("carta").style.display="none";
 }
 </script>
 </body>
