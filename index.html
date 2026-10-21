@@ -85,12 +85,14 @@ section {
 }
 
 .gallery img {
+  display: block;
   width: 100%;
   height: 330px;
   object-fit: cover;
   border: 5px solid white;
   border-radius: 20px;
   box-shadow: 0 6px 18px #9e456125;
+  background: white;
 }
 
 .caption { font-style: italic; color: #98516a; }
@@ -146,8 +148,7 @@ footer { padding: 45px 18px 60px; }
 
 @keyframes subirFlor {
   0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-  15% { opacity: .8; }
-  85% { opacity: .8; }
+  15%, 85% { opacity: .8; }
   100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
 }
 
@@ -180,7 +181,6 @@ footer { padding: 45px 18px 60px; }
   <span class="flor" style="left:48%;animation-duration:19s;animation-delay:2s;font-size:28px">🌷</span>
   <span class="flor" style="left:72%;animation-duration:22s;animation-delay:7s;font-size:32px">🌸</span>
   <span class="flor" style="left:90%;animation-duration:17s;animation-delay:3s;font-size:25px">🌺</span>
-
   <span class="petalo" style="left:12%;animation-duration:13s;animation-delay:1s;font-size:20px">🌸</span>
   <span class="petalo" style="left:35%;animation-duration:15s;animation-delay:6s;font-size:16px">🌷</span>
   <span class="petalo" style="left:60%;animation-duration:14s;animation-delay:3s;font-size:18px">🌸</span>
@@ -204,7 +204,7 @@ footer { padding: 45px 18px 60px; }
     <button id="musicButton" onclick="toggleMusica()">
       🎶 Nuestra canción, mi amor ❤️
     </button>
-    <p>Toca el botón para escuchar nuestra canción. 💗</p>
+    <p id="estadoMusica">Toca el botón para escuchar nuestra canción. 💗</p>
 
     <audio id="nuestraMusica" loop preload="none">
       <source src="musica.mp3" type="audio/mpeg">
@@ -229,22 +229,19 @@ footer { padding: 45px 18px 60px; }
 
   <div class="gallery">
     <div>
-      <img src="WhatsApp%20Image%202026-10-13%20at%2021.47.10.jpeg" alt="Un recuerdo juntos">
+      <img src="foto1.jpeg" alt="Un recuerdo juntos" loading="lazy">
       <p class="caption">Tú y yo, mi lugar bonito. 💗</p>
     </div>
-
     <div>
-      <img src="WhatsApp%20Image%202026-10-13%20at%2021.47.11.jpeg" alt="Otro recuerdo juntos">
+      <img src="foto2.jpeg" alt="Otro recuerdo juntos" loading="lazy">
       <p class="caption">Mi sonrisa favorita eres tú. ❤️</p>
     </div>
-
     <div>
-      <img src="WhatsApp%20Image%202026-10-13%20at%2021.52.33.jpeg" alt="Un momento especial juntos">
+      <img src="foto3.jpeg" alt="Un momento especial juntos" loading="lazy">
       <p class="caption">Un momento que quiero recordar. 🥹</p>
     </div>
-
     <div>
-      <img src="WhatsApp%20Image%202026-10-13%20at%2021.53.05.jpeg" alt="Un recuerdo especial">
+      <img src="foto4.jpeg" alt="Un recuerdo especial" loading="lazy">
       <p class="caption">Siempre tú, mi morenita. 🎀</p>
     </div>
   </div>
@@ -323,29 +320,40 @@ function mostrarFrase() {
 }
 
 function abrirCarta() {
-  document.getElementById("carta").style.display = "block";
-  document.getElementById("carta").scrollIntoView({behavior: "smooth"});
+  const carta = document.getElementById("carta");
+  carta.style.display = "block";
+  carta.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function cerrarCarta() {
   document.getElementById("carta").style.display = "none";
 }
 
-function toggleMusica() {
+async function toggleMusica() {
   const audio = document.getElementById("nuestraMusica");
   const button = document.getElementById("musicButton");
+  const estado = document.getElementById("estadoMusica");
 
   if (audio.paused) {
-    audio.play().then(() => {
+    try {
+      await audio.play();
       button.textContent = "⏸️ Pausar nuestra canción ❤️";
-    }).catch(() => {
-      alert("Asegúrate de que musica.mp3 esté en la misma carpeta que index.html.");
-    });
+      estado.textContent = "Nuestra canción está sonando. 💗";
+    } catch (error) {
+      estado.textContent =
+        "No se pudo reproducir. Revisa que musica.mp3 esté junto a index.html y que sea un audio válido.";
+    }
   } else {
     audio.pause();
     button.textContent = "🎶 Nuestra canción, mi amor ❤️";
+    estado.textContent = "La canción está pausada. 💗";
   }
 }
+
+document.getElementById("nuestraMusica").addEventListener("error", function () {
+  document.getElementById("estadoMusica").textContent =
+    "No se encontró musica.mp3. Revisa el nombre y la extensión del archivo en GitHub.";
+});
 </script>
 
 </body>
